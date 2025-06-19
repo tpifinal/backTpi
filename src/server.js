@@ -3,6 +3,7 @@ import express from "express";
 import categorias from './routes/categorias.routes.js';
 import producto from './routes/producto.routes.js';
 import roles from './routes/roles.routes.js';
+import usuarios from './routes/usuarios.routes.js';
 import cors from "cors";
 
 
@@ -20,6 +21,7 @@ app.set('port', process.env.PORT || 3000)
 app.use(categorias)
 app.use(producto)
 app.use(roles)
+app.use(usuarios)
 //Run server
 app.listen(app.get('port'), () => {
     console.log('conexion con exito');
