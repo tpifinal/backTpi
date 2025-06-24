@@ -1,4 +1,5 @@
 import { Router } from "express";
+import bcrypt from "bcrypt";
 import pool from "../database.js";
 
 const router = Router();
@@ -21,9 +22,12 @@ router.get('/usuarios', async(req,resp)=>{
  router.post("/usuarios", async (req, res) => {
     try {
       const { nombre, email, password, rol_id } = req.body;
+
+      const lenght = 10; 
+      const hashedPassword = await bcrypt.hash(password,lenght)
       const [result] = await pool.query(
         "insert into usuarios (nombre, email, password, rol_id) values (?,?,?,?)",
-        [nombre, email, password, rol_id]
+        [nombre, email, hashedPassword, rol_id]
       );
       res.json({
         message: "usuario creado con exito",

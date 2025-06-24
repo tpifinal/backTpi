@@ -33,9 +33,9 @@ router.post('/categorias', async (req, res) => {
         res.status(500).send("Error al crear un categoria");
     }
 });
-router.put('/categorias/:id', async (req, res) => {
+router.patch('/categorias/:id', async (req, res) => {
     try {
-        const { id } = req.query;
+        const { id } = req.params;
         const { nombre, imagen } = req.body
 
         await pool.query('update categorias set nombre = ?,imagen=? where id = ?', [nombre, imagen, id])
