@@ -5,6 +5,7 @@ import producto from './routes/producto.routes.js';
 import roles from './routes/roles.routes.js';
 import usuarios from './routes/usuarios.routes.js';
 import cors from "cors";
+import login from './routes/login.routes.js';
 
 
 //Intialization
@@ -22,6 +23,7 @@ app.use(categorias)
 app.use(producto)
 app.use(roles)
 app.use(usuarios)
+app.use(login)
 //Run server
 app.listen(app.get('port'), () => {
     console.log('conexion con exito');
